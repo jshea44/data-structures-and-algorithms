@@ -8,8 +8,8 @@ Reverse an array
 
 ## Approach & Efficiency
 
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+I used a real whiteboard then rewrote in invision.
 
 ## Solution
 
-<!-- Show how to run your code, and examples of it in action -->
+Look at whiteboard.
