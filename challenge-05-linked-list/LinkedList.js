@@ -4,7 +4,7 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
-    this.prev = null;
+    // this.prev = null;
   }
 }
 
@@ -15,8 +15,8 @@ class LinkedList {
 
   insert(value) {
     let newNode = new Node(value);
-    newNode.next = head;
-    head = newNode;
+    newNode.next = this.head;
+    this.head = newNode;
   }
 
   includes(value) {
@@ -34,7 +34,7 @@ class LinkedList {
     let current = this.head;
     let result = "";
     while (current) {
-      result += `{ ${currrent.value} } -> `;
+      result += `{ ${current.value} } -> `;
       current = current.next;
     }
     return result + "NULL";
