@@ -116,4 +116,45 @@ describe("Testing Linked List class", () => {
       "{ 3 } -> { 2 } -> { 1 } -> { test } -> NULL"
     );
   });
+
+  // linked-list-kth
+  test("Where k is greater than the length of the linked list", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.insert(3);
+    expect(linkedList.findKthFromEnd(4)).toBeNull();
+  });
+
+  test("Where k and the length of the list are the same", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.insert(3);
+    expect(linkedList.findKthFromEnd(3)).toBeNull();
+  });
+
+  test("Where k is not a positive integer", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.insert(3);
+    expect(linkedList.findKthFromEnd(-1)).toBeNull();
+  });
+
+  test("Where the linked list is of a size 1", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    expect(linkedList.findKthFromEnd(1)).toBeNull();
+  });
+
+  test("Happy Path where k is not at the end, but somewhere in the middle of the linked list", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.insert(3);
+    linkedList.insert(4);
+    linkedList.insert(5);
+    expect(linkedList.findKthFromEnd(3)).toBe(4);
+  });
 });

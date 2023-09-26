@@ -98,6 +98,30 @@ class LinkedList {
 
     current.next = newNode;
   }
+
+  findKthFromEnd(k) {
+    if (k < 1 || !this.head) {
+      return null;
+    }
+
+    let fastPointer = this.head;
+    let slowPointer = this.head;
+
+    for (let i = 0; i < k; i++) {
+      if (fastPointer.next) {
+        fastPointer = fastPointer.next;
+      } else {
+        return null;
+      }
+    }
+
+    while (fastPointer.next) {
+      fastPointer = fastPointer.next;
+      slowPointer = slowPointer.next;
+    }
+
+    return slowPointer.value;
+  }
 }
 
 module.exports = LinkedList;
