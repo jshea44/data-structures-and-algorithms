@@ -53,4 +53,67 @@ describe("Testing Linked List class", () => {
     linkedList.insert(3);
     expect(linkedList.toString()).toBe("{ 3 } -> { 2 } -> { 1 } -> NULL");
   });
+
+  test("Can successfully add a node to the end of the linked list", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.append("test");
+    expect(linkedList.toString()).toBe("{ 2 } -> { 1 } -> { test } -> NULL");
+  });
+
+  test("Can successfully add multiple nodes to the end of a linked list", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.append("test");
+    linkedList.append("test2");
+    expect(linkedList.toString()).toBe(
+      "{ 2 } -> { 1 } -> { test } -> { test2 } -> NULL"
+    );
+  });
+
+  test("Can successfully insert a node before a node located in the middle of a linked list", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.insert(3);
+    linkedList.insertBefore(2, "test");
+    expect(linkedList.toString()).toBe(
+      "{ 3 } -> { test } -> { 2 } -> { 1 } -> NULL"
+    );
+  });
+
+  test("Can successfully insert a node before the first node of a linked list", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.insert(3);
+    linkedList.insertBefore(3, "test");
+    expect(linkedList.toString()).toBe(
+      "{ test } -> { 3 } -> { 2 } -> { 1 } -> NULL"
+    );
+  });
+
+  test("Can successfully insert after a node in the middle of the linked list", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.insert(3);
+    linkedList.insertAfter(2, "test");
+    expect(linkedList.toString()).toBe(
+      "{ 3 } -> { 2 } -> { test } -> { 1 } -> NULL"
+    );
+  });
+
+  test("Can successfully insert a node after the last node of the linked list", () => {
+    let linkedList = new LinkedList();
+    linkedList.insert(1);
+    linkedList.insert(2);
+    linkedList.insert(3);
+    linkedList.insertAfter(1, "test");
+    expect(linkedList.toString()).toBe(
+      "{ 3 } -> { 2 } -> { 1 } -> { test } -> NULL"
+    );
+  });
 });
