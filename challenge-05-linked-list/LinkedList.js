@@ -124,4 +124,49 @@ class LinkedList {
   }
 }
 
-module.exports = LinkedList;
+function zipLists(list1, list2) {
+  if (!list1.head) {
+    return list2;
+  }
+  if (!list2.head) {
+    return list1;
+  }
+
+  const result = new LinkedList();
+  let current1 = list1.head;
+  let current2 = list2.head;
+  let currentResult = null;
+
+  while (current1 && current2) {
+    if (!result.head) {
+      result.head = new Node(current1.value);
+      currentResult = result.head;
+    } else {
+      currentResult.next = new Node(current1.value);
+      currentResult = currentResult.next;
+    }
+
+    currentResult.next = new Node(current2.value);
+    currentResult = currentResult.next;
+
+    current1 = current1.next;
+    current2 = current2.next;
+  }
+
+  // If one list is longer than the other
+  while (current1) {
+    currentResult.next = new Node(current1.value);
+    currentResult = currentResult.next;
+    current1 = current1.next;
+  }
+
+  while (current2) {
+    currentResult.next = new Node(current2.value);
+    currentResult = currentResult.next;
+    current2 = current2.next;
+  }
+
+  return result;
+}
+
+module.exports = { LinkedList, zipLists };

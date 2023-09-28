@@ -1,6 +1,6 @@
 "use strict";
 
-const LinkedList = require("./LinkedList.js");
+const { LinkedList, zipLists } = require("./LinkedList.js");
 
 describe("Testing Linked List class", () => {
   test("Can successfully instantiate an empty linked list", () => {
@@ -156,5 +156,30 @@ describe("Testing Linked List class", () => {
     linkedList.insert(4);
     linkedList.insert(5);
     expect(linkedList.findKthFromEnd(3)).toBe(4);
+  });
+
+  test("Zips two lists of equal length.", () => {
+    const list1 = new LinkedList();
+    const list2 = new LinkedList();
+    list1.insert(3);
+    list1.insert(1);
+    list2.insert(4);
+    list2.insert(2);
+    const result = zipLists(list1, list2);
+    expect(result.toString()).toBe("{ 1 } -> { 2 } -> { 3 } -> { 4 } -> NULL");
+  });
+
+  test("Zips two lists, one list being longer than the other.", () => {
+    const list1 = new LinkedList();
+    const list2 = new LinkedList();
+    list1.insert(3);
+    list1.insert(1);
+    list2.insert(5);
+    list2.insert(4);
+    list2.insert(2);
+    const result = zipLists(list1, list2);
+    expect(result.toString()).toBe(
+      "{ 1 } -> { 2 } -> { 3 } -> { 4 } -> { 5 } -> NULL"
+    );
   });
 });
