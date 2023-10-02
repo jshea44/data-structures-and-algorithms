@@ -169,4 +169,4 @@ function zipLists(list1, list2) {
   return result;
 }
 
-module.exports = { LinkedList, zipLists };
+module.exports = { LinkedList, zipLists, Node };
