@@ -1,4 +1,4 @@
-import LinkedList from "./linkedList";
+const LinkedList = require("./linkedList.js");
 
 class HashTable {
   constructor(size) {
@@ -41,4 +41,27 @@ class HashTable {
       return list.values(); // 0(m) runs as many times as there are values in the list.
     }
   }
+
+  has(key) {
+    let hash = this.hash(key);
+    let list = this.buckets[hash];
+    return !!list; // Return true if there's a list (i.e., the key exists), false otherwise.
+  }
+
+  keys() {
+    let keys = [];
+    for (let i = 0; i < this.size; i++) {
+      let list = this.buckets[i];
+      if (list) {
+        let listKeys = list.values().map((entry) => {
+          const [key, _] = entry.split(":");
+          return key;
+        });
+        keys = keys.concat(listKeys);
+      }
+    }
+    return keys;
+  }
 }
+
+module.exports = HashTable;
