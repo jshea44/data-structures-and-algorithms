@@ -8,9 +8,10 @@
 
 ## Testing
 
--
--
--
+- Finding the first repeated word in a string
+  - Test when there's a repeated word
+  - Test when there's no repeated word
+  - Test with case-insensitive repeated word
 
 ## Resources
 
